@@ -13,14 +13,19 @@ class Banco {
     }
 
     saque() {
-        let valorSaque = readline.questionFloat("Informe o valor do saque: ");
-        if (valorSaque > this.saldo) {
-            console.log("Você não possui esse valor para saque.");
-        } else {
-            this.saldo -= valorSaque;
-            console.log("Saque efetuado com sucesso.");
-            console.log(`Seu saldo atual é ${this.saldo}`);
-        }
+        let loop = false;
+        do{
+            let valorSaque = readline.questionFloat("Informe o valor do saque: ");
+            if (valorSaque > this.saldo) {
+                console.log("Você não possui esse valor para saque.");
+                loop = true;
+            } else {
+                this.saldo -= valorSaque;
+                console.log("Saque efetuado com sucesso.");
+                console.log(`Seu saldo atual é ${this.saldo}`);
+                loop = false;
+            }
+        }while (loop===true);
     };
 
     deposito() {
